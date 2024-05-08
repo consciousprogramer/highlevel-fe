@@ -17,8 +17,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}${process.env.NEXT_PUBLIC_API_BASE_PATH}/:path*`,
+        source: "/api/v1/:path*",
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}${process.env.NEXT_PUBLIC_API_BASE_PATH}${process.env.NEXT_PUBLIC_DEFAULT_API_VERSION}/:path*`,
       },
     ];
   },

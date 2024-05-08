@@ -31,12 +31,6 @@ let didReadFromLocalStorage = false;
 export const WalletContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  console.log("context being initialized on server:", isServer());
-  const readCountRef = useRef(-1);
-  readCountRef.current++;
-
-  console.log("context render count : ", readCountRef.current);
-
   const { getLocalStorage, setLocalStorage, clearLocalStorageKey } =
     useLocalStorage();
 
@@ -48,10 +42,6 @@ export const WalletContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [wallet, setWallet] = useState<ILCWallet | null>(
     readFromLocalStorage()
   );
-
-  if (readCountRef.current === 0) {
-    console.log("Initial wallet data : ", wallet);
-  }
 
   const addWallet = useCallback(
     (walletData: ILCWallet) => {

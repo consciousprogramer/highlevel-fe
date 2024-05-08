@@ -11,8 +11,6 @@ import Link from "next/link";
 import React from "react";
 
 function Navbar() {
-  console.log("nav rendering, server:", isServer());
-
   const walletContext = useWalletContext();
   const { getLocalStorage } = useLocalStorage();
 

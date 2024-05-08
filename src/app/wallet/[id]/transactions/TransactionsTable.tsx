@@ -29,37 +29,19 @@ const TransactionsTable = ({ walletId }: { walletId: string }) => {
     limit: number;
     totalRows: number;
     isReady: boolean;
-    sortOn: keyof Transaction;
-    sortOrder: TSortOrderType;
   }>({
     page: 1,
     limit: 10,
     totalRows: 0,
     isReady: false,
-    sortOn: "createdAt",
-    sortOrder: "DESC",
   });
 
-  const { isReady, limit, page, sortOn, sortOrder, totalRows } = paginationData;
+  const { isReady, limit, page, totalRows } = paginationData;
 
-  const sortOrderChangeHandler = (field: keyof Transaction) => {
-    if (sortOn === field) {
-      setPagination((prev) => {
-        return {
-          ...prev,
-          sortOrder: sortOrder === "ASC" ? "DESC" : "ASC",
-        };
-      });
-    } else {
-      setPagination((prev) => {
-        return {
-          ...prev,
-          sortOn: field,
-          sortOrder: "ASC",
-        };
-      });
-    }
-  };
+  const {
+    sortChangeHandler,
+    sortData: { sortOn, sortOrder },
+  } = useManageSort<Transaction>();
 
   const download = async () => {
     const {
@@ -128,8 +110,8 @@ const TransactionsTable = ({ walletId }: { walletId: string }) => {
     })();
   }, [isReady, limit, page, sortOn, sortOrder, walletId]);
 
-  if (!isReady || isLoading) {
-    return <p className="tw-text-3xl">Loading...</p>;
+  if (!isReady) {
+    return <p className="tw-text-3xl tw-text-center tw-py-8">Loading...</p>;
   }
 
   return (
@@ -158,7 +140,7 @@ const TransactionsTable = ({ walletId }: { walletId: string }) => {
                       key={field}
                       sortOn={sortOn}
                       sortOrder={sortOrder}
-                      sortOrderChangeHandler={sortOrderChangeHandler}
+                      sortOrderChangeHandler={sortChangeHandler}
                     />
                   ))}
                 </tr>

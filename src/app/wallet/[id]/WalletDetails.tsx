@@ -1,12 +1,8 @@
 import { walletServicesRepo } from "@/services/wallet.services";
-import { formatNumberIndian } from "@/utils/general.utils";
 import Link from "next/link";
 import React from "react";
-import toast from "react-hot-toast";
 
 const WalletDetails: React.FC<{ walletId: string }> = async ({ walletId }) => {
-  console.log("[WalletDetails] rendering");
-
   const {
     data: { name, balance, createdAt, id },
   } = await walletServicesRepo.fetchWalletService({ walletId });

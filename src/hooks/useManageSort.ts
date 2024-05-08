@@ -1,14 +1,15 @@
+import { TSortOrderType } from "@/types/api/base.types";
 import { useCallback, useState } from "react";
 
 export interface ISortData<IObject extends Record<string, any>> {
   sortOn: keyof IObject;
-  sortOrder: "asc" | "desc";
+  sortOrder: TSortOrderType;
 }
 
 export const useManageSort = <T extends Record<string, any>>() => {
   const [sortData, setSortData] = useState<ISortData<T>>({
     sortOn: "id",
-    sortOrder: "asc",
+    sortOrder: "ASC",
   });
 
   const sortChangeHandler = useCallback(
@@ -16,12 +17,12 @@ export const useManageSort = <T extends Record<string, any>>() => {
       if (sortData.sortOn === field) {
         setSortData((prevState) => ({
           ...prevState,
-          sortOrder: prevState.sortOrder === "asc" ? "desc" : "asc",
+          sortOrder: prevState.sortOrder === "ASC" ? "DESC" : "ASC",
         }));
       } else {
         setSortData({
           sortOn: field,
-          sortOrder: "asc",
+          sortOrder: "ASC",
         });
       }
     },

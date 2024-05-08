@@ -28,7 +28,14 @@ const CheckSetupedWallet = () => {
 
   useLayoutEffect(() => {
     const path = window.location.pathname;
-    if (path.includes("setup") || path === "" || path === "/") {
+    if (
+      path.includes("setup") ||
+      path.includes("transact") ||
+      path.includes("receipt") ||
+      path.includes("transactions") ||
+      path === "" ||
+      path === "/"
+    ) {
       const wallet = getLocalStorage("wallet");
       if (!wallet) {
         toast.success("Need to setup a wallet first.");

@@ -18,7 +18,7 @@ const TransactionDataRow = ({
           case "amount":
             return (
               <td key={field} className="tw-p-2 tw-border tw-border-gray-200">
-                ₹ {formatToIndianNumber(+transaction[field])}
+                ₹ {formatToIndianNumber(Math.abs(+transaction[field]))}
               </td>
             );
           case "closingBalance":

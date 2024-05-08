@@ -5,6 +5,8 @@ const NumberSelectPanel = ({
   setPagination,
   value,
   list,
+  optionRenderer,
+  title,
 }: {
   value: string | number;
   setPagination: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -14,16 +16,12 @@ const NumberSelectPanel = ({
 }) => {
   return (
     <div className="tw-flex tw-items-center tw-justify-end tw-gap-x-1">
-      <p className="">title</p>
+      <p className="">{title}</p>
       <NumberSelect
         setPagination={setPagination}
         value={value}
         list={list}
-        optionRenderer={(item, i) => (
-          <option className="tw-p-1" key={i} value={i + 1}>
-            {i + 1}
-          </option>
-        )}
+        optionRenderer={optionRenderer}
       />
     </div>
   );

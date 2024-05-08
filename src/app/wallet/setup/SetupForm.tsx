@@ -100,9 +100,18 @@ function FormSetupData() {
           errors={errors}
         />
         <FormInput
+          type="number"
           fieldName="balance"
           label="Initial balance"
           register={register("balance", {
+            validate: {
+              decimal: (value) => {
+                return (
+                  /^([0-9]*[.])?[0-9]{0,4}$/.test(value.toString()) ||
+                  "Please enter a number with upto 4 decimal places"
+                );
+              },
+            },
             required: false,
             valueAsNumber: true,
             min: {

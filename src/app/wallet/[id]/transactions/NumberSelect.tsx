@@ -4,6 +4,7 @@ const NumberSelect = ({
   setPagination,
   value,
   list,
+  optionRenderer,
 }: {
   value: string | number;
   setPagination: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -12,11 +13,7 @@ const NumberSelect = ({
 }) => {
   return (
     <select className="tw-p-1" value={value} onChange={setPagination}>
-      {list.map((item) => (
-        <option className="tw-p-1" key={item} value={item}>
-          {item}
-        </option>
-      ))}
+      {list.map(optionRenderer)}
     </select>
   );
 };
