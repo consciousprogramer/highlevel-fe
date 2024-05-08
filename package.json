@@ -1,0 +1,35 @@
+{
+  "name": "ghl-fe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "lodash": "^4.17.21",
+    "next": "14.2.3",
+    "object-path": "^0.11.8",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-error-boundary": "^4.0.13",
+    "react-hook-form": "^7.51.3",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20",
+    "@types/object-path": "^0.11.4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
